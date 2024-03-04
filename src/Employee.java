@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.Objects;
 
 public class Employee {
@@ -7,7 +8,7 @@ public class Employee {
     private int department;
     private int salary;
     private int id;
-    static int conter = 1;
+    private static int conter = 1;
 
     public Employee(String name, String surname, String patronymic, int department, int salary) {
         this.name = name;
@@ -55,11 +56,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return department == employee.department &&
-                salary == employee.salary && id == employee.id &&
-                Objects.equals(name, employee.name) &&
-                Objects.equals(surname, employee.surname) &&
-                Objects.equals(patronymic, employee.patronymic);
+        return id == employee.id;
     }
 
     @Override
@@ -69,8 +66,9 @@ public class Employee {
 
     @Override
     public String toString() {
-        return id + ") " + "ФИО: " + name + " " + surname + " " + patronymic + ". "
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+        return id + ") " + "ФИО: " + surname + " " + name + " " + patronymic + ". "
                 + "Отдел № " + department + ". "
-                + "Зарплата: " + salary;
+                + "Зарплата: " + numberFormat.format(salary);
     }
 }
