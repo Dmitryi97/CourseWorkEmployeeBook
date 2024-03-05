@@ -72,6 +72,9 @@ public class Main {
                 index++;
             }
         }
+        if (index == 0) {
+            System.out.println("В базе данных нет сотрудников");
+        }
         double averageSalary = sumSalary(employee) / index;
         return averageSalary;
     }
