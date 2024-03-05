@@ -49,7 +49,7 @@ public class Main {
         int index = 0;
         for (int i = 0; i < employee.length; i++) {
             if (employee[i] != null && employee[i].getSalary() < employee[index].getSalary()) {
-                    index = i;
+                index = i;
             }
         }
         return employee[index];
@@ -59,7 +59,7 @@ public class Main {
         int index = 0;
         for (int i = 0; i < employee.length; i++) {
             if (employee[i] != null && employee[i].getSalary() > employee[index].getSalary()) {
-                    index = i;
+                index = i;
             }
         }
         return employee[index];
