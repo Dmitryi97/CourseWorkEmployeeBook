@@ -18,9 +18,9 @@ public class Main {
         System.out.println();
         System.out.println("Сумма затрат на ЗП в месяц: " + numberFormat.format(sumSalary(employee)));
         System.out.println();
-        System.out.println("Сотрудник с минимальной ЗП - " + employee[minSalary(employee)]);
+        System.out.println("Сотрудник с минимальной ЗП - " + minSalary(employee));
         System.out.println();
-        System.out.println("Сотрудник с максимальной ЗП - " + employee[maxSalary(employee)]);
+        System.out.println("Сотрудник с максимальной ЗП - " + maxSalary(employee));
         System.out.println();
         System.out.println("Среднее значение зарплаты " + numberFormat.format(averageSalary(employee)));
         System.out.println();
@@ -29,7 +29,9 @@ public class Main {
 
     public static void print(Employee[] employee) {
         for (int i = 0; i < employee.length; i++) {
-            if (employee[i] != null) System.out.println(employee[i]);
+            if (employee[i] != null) {
+                System.out.println(employee[i]);
+            }
         }
     }
 
@@ -43,32 +45,34 @@ public class Main {
         return sumSalary;
     }
 
-    public static int minSalary(Employee[] employee) {
+    public static Employee minSalary(Employee[] employee) {
         int index = 0;
         for (int i = 0; i < employee.length; i++) {
-            if (employee[i] != null) {
-                if (employee[i].getSalary() < employee[index].getSalary()) {
+            if (employee[i] != null && employee[i].getSalary() < employee[index].getSalary()) {
                     index = i;
-                }
             }
         }
-        return index;
+        return employee[index];
     }
 
-    public static int maxSalary(Employee[] employee) {
+    public static Employee maxSalary(Employee[] employee) {
         int index = 0;
         for (int i = 0; i < employee.length; i++) {
-            if (employee[i] != null) {
-                if (employee[i].getSalary() > employee[index].getSalary()) {
+            if (employee[i] != null && employee[i].getSalary() > employee[index].getSalary()) {
                     index = i;
-                }
             }
         }
-        return index;
+        return employee[index];
     }
 
     public static double averageSalary(Employee[] employee) {
-        double averageSalary = sumSalary(employee) / employee.length;
+        int index = 0;
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] != null) {
+                index++;
+            }
+        }
+        double averageSalary = sumSalary(employee) / index;
         return averageSalary;
     }
 
