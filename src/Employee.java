@@ -2,13 +2,13 @@ import java.text.NumberFormat;
 import java.util.Objects;
 
 public class Employee {
-    private String name;
-    private String surname;
-    private String patronymic;
+    private final String name;
+    private final String surname;
+    private final String patronymic;
     private int department;
     private double salary;
-    private int id;
-    private static int conter = 1;
+    private final int id;
+    private static int counter = 1;
 
     public Employee(String name, String surname, String patronymic, int department, double salary) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Employee {
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
-        id = conter++;
+        this.id = counter++;
     }
 
     public String getName() {
@@ -67,7 +67,7 @@ public class Employee {
     @Override
     public String toString() {
         NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
-        return id + ") " + "ФИО: " + surname + " " + name + " " + patronymic + ". "
+        return "id " + id + " " + "ФИО: " + surname + " " + name + " " + patronymic + ". "
                 + "Отдел № " + department + ". "
                 + "Зарплата: " + numberFormat.format(salary);
     }
