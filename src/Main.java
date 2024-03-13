@@ -23,7 +23,8 @@ public class Main {
         for (int i = 0; i < EMPLOYEES.length; i++) {
             EMPLOYEES[i] = generateEmployee();
         }
-        EmployeeBook employeeBook = new EmployeeBook(EMPLOYEES,10);
+        EmployeeBook employeeBook = new EmployeeBook(10);
+        autocompleteEmloyeeBook(employeeBook);
         employeeBook.print();
         System.out.println();
         System.out.println("Сумма затрат на ЗП в месяц = " + numberFormat.format(employeeBook.calculationSalaryAmount()));
@@ -62,11 +63,19 @@ public class Main {
         employeeBook.deletionEmployee(7);
         employeeBook.print();
         System.out.println();
-        Employee n = new Employee("Дмитрий","Токарве","Андреевич",1,122_000);
+        Employee n = new Employee("Дмитрий", "Токарев", "Андреевич", 2, 120_000);
         employeeBook.addNewEmployee(n);
         employeeBook.print();
         System.out.println();
         System.out.println(employeeBook.searchEmployee(11));
+    }
+
+    //Мемтод ля автозаполнения employeeBook элементами из массива EMPLOYEES, чтобы не заполнять самостоятельно
+    public static void autocompleteEmloyeeBook(EmployeeBook employeeBook) {
+        for (int i = 0; i < EMPLOYEES.length; i++) {
+            Employee n = EMPLOYEES[i];
+            employeeBook.addNewEmployee(n);
+        }
     }
 }
 

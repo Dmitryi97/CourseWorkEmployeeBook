@@ -1,10 +1,10 @@
 import java.text.NumberFormat;
 
 public class EmployeeBook {
-    private static Employee[] employee;
+    private Employee[] employee;
 
-    public EmployeeBook(Employee[] employee, int i) {
-        this.employee = employee;
+    public EmployeeBook(int i) {
+        this.employee = new Employee[i];
     }
 
     public void print() {
@@ -167,27 +167,31 @@ public class EmployeeBook {
             }
         }
     }
+
     //Очень сложно пункт 4.а
-    public boolean addNewEmployee(Employee n){
+    public boolean addNewEmployee(Employee n) {
         boolean freeCell = false;
-        for (int i = 0; i < employee.length-1; i++) {
-            if (employee[i] == null){
+        for (int i = 0; i < employee.length; i++) {
+            if (employee[i] == null) {
                 employee[i] = n;
                 freeCell = true;
+                break;
             }
         }
         return freeCell;
     }
+
     //Очень сложно пункт 4.b
-    public void deletionEmployee(int id){
+    public void deletionEmployee(int id) {
         for (int i = 0; i < employee.length; i++) {
-            if (employee[i].getId() == id){
+            if (employee[i].getId() == id) {
                 employee[i] = null;
             }
         }
     }
+
     //Очень сложно пункт 5
-    public Employee searchEmployee(int id){
+    public Employee searchEmployee(int id) {
         for (Employee employee : employee) {
             if (employee.getId() == id) {
                 return employee;
